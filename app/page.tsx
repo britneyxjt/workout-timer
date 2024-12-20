@@ -1,6 +1,6 @@
 'use client';
 
-import WorkoutTimer from '@/components/WorkoutTimer';
+import WorkoutTimer from '../components/WorkoutTimer';
 
 export default function Home() {
   return (
