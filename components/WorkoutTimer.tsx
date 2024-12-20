@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 
 const WorkoutTimer = () => {
-  const exercises = [
+  const exercises = useMemo(() => [
     { name: "热身准备", duration: 5, description: "准备开始运动" },
     { name: "开合跳", duration: 30, description: "双脚跳起同时双手上举" },
     { name: "休息", duration: 5, description: "短暂休息，调整呼吸" },
     { name: "俯卧撑", duration: 30, description: "保持身体平直，缓慢上下" },
     { name: "休息", duration: 5, description: "短暂休息，调整呼吸" },
     { name: "深蹲", duration: 30, description: "背部挺直，膝盖不超过脚尖" }
-  ];
+  ], []);
 
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(exercises[0].duration);
