@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 
-const exercises = [
-  { name: "热身准备", duration: 5, description: "准备开始运动" },
-  { name: "开合跳", duration: 30, description: "双脚跳起同时双手上举" },
-  { name: "休息", duration: 5, description: "短暂休息，调整呼吸" },
-  { name: "俯卧撑", duration: 30, description: "保持身体平直，缓慢上下" },
-  { name: "休息", duration: 5, description: "短暂休息，调整呼吸" },
-  { name: "深蹲", duration: 30, description: "背部挺直，膝盖不超过脚尖" }
-];
-
 const WorkoutTimer = () => {
+  const exercises = [
+    { name: "热身准备", duration: 5, description: "准备开始运动" },
+    { name: "开合跳", duration: 30, description: "双脚跳起同时双手上举" },
+    { name: "休息", duration: 5, description: "短暂休息，调整呼吸" },
+    { name: "俯卧撑", duration: 30, description: "保持身体平直，缓慢上下" },
+    { name: "休息", duration: 5, description: "短暂休息，调整呼吸" },
+    { name: "深蹲", duration: 30, description: "背部挺直，膝盖不超过脚尖" }
+  ];
+
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(exercises[0].duration);
   const [isRunning, setIsRunning] = useState(false);
@@ -26,7 +26,7 @@ const WorkoutTimer = () => {
       setTimeLeft(exercises[currentExerciseIndex + 1].duration);
     }
     return () => clearInterval(timer);
-  }, [isRunning, timeLeft, currentExerciseIndex]);
+  }, [isRunning, timeLeft, currentExerciseIndex, exercises]);
 
   const toggleTimer = () => {
     setIsRunning(!isRunning);
@@ -37,8 +37,6 @@ const WorkoutTimer = () => {
     setCurrentExerciseIndex(0);
     setTimeLeft(exercises[0].duration);
   };
-
-  const progress = (exercises[currentExerciseIndex].duration - timeLeft) / exercises[currentExerciseIndex].duration * 100;
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
@@ -53,13 +51,6 @@ const WorkoutTimer = () => {
           <div className="text-6xl font-bold text-blue-500">
             {timeLeft}
           </div>
-        </div>
-
-        <div className="relative h-4 bg-gray-200 rounded-full overflow-hidden">
-          <div 
-            className="absolute h-full bg-blue-500 transition-all duration-1000"
-            style={{ width: `${progress}%` }}
-          />
         </div>
 
         <div className="flex justify-center space-x-4">
