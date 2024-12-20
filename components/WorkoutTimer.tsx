@@ -32,10 +32,12 @@ const WorkoutTimer = () => {
 
   const playSound = () => {
     if (isSoundEnabled) {
-      const audio = new Audio('data:audio/wav;base64,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');
-      audio.play().catch(() => {
-        console.log('Sound play failed');
-      });
+      try {
+        const audio = new Audio("data:audio/wav;base64,//uQRAAAAWMSLwUIYAAsYkXgoQwAEaYLWfkWgAI0wWs/ItAAAGDgYtAgAyN+QWaAAihwMWm4G8QQRDiMcCBcH3Cc+CDv/7xA4Tvh9Rz/y8QADBwMWgQAZG/ILNAARQ4GLTcDeIIIhxGOBAuD7hOfBB3/94gcJ3w+o5/5eIAIAAAVwWgQAVQ2ORaIQwEMAJiDg95G4nQL7mQVWI6GwRcfsZAcsKkJvxgxEjzFUgfHoSQ9Qq7KNwqHwuB13MA4a1q/DmBrHgPcmjiGoh//EwC5nGPEmS4RcfkVKOhJf+WOgoxJclFz3kgn//dBA+ya1GhurNn8zb//9NNutNuhz31f////9vt///z+IdAEAAAK4LQIAKobHItEIYCGAExBwe8jcToF9zIKrEdDYIuP2MgOWFSE34wYiR5iqQPj0JIeoVdlG4VD4XA67mAcNa1fhzA1jwHuTRxDUQ//iYBczjHiTJcIuPyKlHQkv/LHQUYkuSi57yQT//uggfZNajQ3Vmz+Zt//+mm3Wm3Q576v////+32///5/EOgAAADVghQAAAAA=");
+        audio.play();
+      } catch (error) {
+        console.log('Sound play failed', error);
+      }
     }
   };
 
@@ -58,7 +60,7 @@ const WorkoutTimer = () => {
 
   const progress = (exercises[currentExerciseIndex].duration - timeLeft) / exercises[currentExerciseIndex].duration * 100;
 
-  return (
+return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-4">
       <div className="max-w-md mx-auto">
         <div className="backdrop-blur-lg bg-white/10 rounded-2xl shadow-xl p-6 space-y-6">
